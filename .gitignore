@@ -39,3 +39,6 @@ dist/
 # Temporary files
 *.tmp
 *.swp
+
+# Markdown files (temporarily ignore)
+*.md
