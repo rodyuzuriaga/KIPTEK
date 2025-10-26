@@ -3,8 +3,9 @@ pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract KIPTEKVoting is Ownable, ReentrancyGuard {
+contract KIPTEKVoting is Ownable, ReentrancyGuard, ERC20 {
     struct Candidate {
         string name;
         uint256 voteCount;
@@ -30,7 +31,7 @@ contract KIPTEKVoting is Ownable, ReentrancyGuard {
     event VotingStarted(uint256 endTime);
     event VotingEnded();
 
-    constructor(string[] memory candidateNames, uint256 commitDuration, uint256 revealDuration) Ownable(msg.sender) {
+    constructor(string[] memory candidateNames, uint256 commitDuration, uint256 revealDuration) Ownable(msg.sender) ERC20("KIPTEK Vote Token", "KVT") {
         for (uint256 i = 0; i < candidateNames.length; i++) {
             candidates.push(Candidate(candidateNames[i], 0));
         }
@@ -46,6 +47,7 @@ contract KIPTEKVoting is Ownable, ReentrancyGuard {
         require(!voters[msg.sender].hasCommitted, "Already committed");
 
         voters[msg.sender] = Voter(true, false, commitment, 0);
+        _mint(msg.sender, 1); // Mint 1 KVT token per vote
         emit Committed(msg.sender, commitment);
     }
 
@@ -66,7 +68,7 @@ contract KIPTEKVoting is Ownable, ReentrancyGuard {
     }
 
     function startRevealPhase() external onlyOwner {
-        require(block.timestamp >= votingEndTime, "Commit phase not ended");
+        // require(block.timestamp >= votingEndTime, "Commit phase not ended"); // Removed for demo
         require(!revealPhase, "Reveal already started");
         votingOpen = false;
         revealPhase = true;
@@ -101,5 +103,13 @@ contract KIPTEKVoting is Ownable, ReentrancyGuard {
     function verifyIdentity(bytes32 identityHash) external view returns (bool) {
         // Placeholder: In real app, check against off-chain verified hash
         return identityHash != 0; // Simple check
+    }
+
+    function hasCommitted(address voter) external view returns (bool) {
+        return voters[voter].hasCommitted;
+    }
+
+    function hasRevealed(address voter) external view returns (bool) {
+        return voters[voter].hasRevealed;
     }
 }

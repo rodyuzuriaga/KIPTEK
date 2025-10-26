@@ -16,10 +16,10 @@ Completar KIPTEK: Sistema de votación privada on-chain en Scroll zkEVM con IA, 
 ### 2. Frontend (UI/UX)
 - [x] Crear app React básica con ethers.js.
 - [x] Conectar a contrato: Actualizar ABI y dirección deployada.
-- [ ] Mejorar UI: Diseño amigable (responsive, accesible), mostrar candidatos, votos en tiempo real.
+- [x] Mejorar UI: Diseño amigable (responsive, accesible), mostrar candidatos, votos en tiempo real.
 - [x] Integrar wallet: MetaMask connection, manejo de errores. -> Cambiado a Web3Auth social login.
 - [x] Simular inclusión: Placeholder para account abstraction (futuro). -> Implementado con Web3Auth.
-- [ ] Testing: Probar en browser, mobile-friendly.
+- [x] Testing: Probar en browser, mobile-friendly.
 
 ### 3. IA y Privacidad
 - [ ] Implementar IA off-chain: Usar API gratuita (Hugging Face) para verificación de identidad (e.g., OCR en DNI).

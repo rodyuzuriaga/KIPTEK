@@ -7,8 +7,8 @@ async function main() {
 
   const KIPTEKVoting = await ethers.getContractFactory("KIPTEKVoting");
   const candidates = ["Candidate A", "Candidate B"];
-  const commitDuration = 3600; // 1 hour for commit
-  const revealDuration = 1800; // 30 min for reveal
+  const commitDuration = 60; // 1 minute for commit
+  const revealDuration = 60; // 1 minute for reveal
   const voting = await KIPTEKVoting.deploy(candidates, commitDuration, revealDuration);
 
   await voting.waitForDeployment();
