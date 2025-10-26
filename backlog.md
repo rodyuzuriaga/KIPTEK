@@ -7,18 +7,18 @@ Completar KIPTEK: Sistema de votación privada on-chain en Scroll zkEVM con IA, 
 
 ### 1. Backend (Smart Contract)
 - [x] Crear contrato básico KIPTEKVoting.sol (votación simple, OpenZeppelin).
-- [ ] Mejorar privacidad: Implementar esquema commit-reveal básico para anonimato (sin ZK full por tiempo).
-- [ ] Agregar funciones: Verificación de identidad básica (e.g., hash de DNI), conteo automático.
-- [ ] Optimizar gas: Revisar y reducir costos en Scroll.
-- [ ] Tests: Agregar más tests (votación múltiple, edge cases).
-- [ ] Compilar y verificar: Asegurar sin errores.
+- [x] Mejorar privacidad: Implementar esquema commit-reveal básico para anonimato (sin ZK full por tiempo).
+- [x] Agregar funciones: Verificación de identidad básica (e.g., hash de DNI), conteo automático.
+- [x] Optimizar gas: Revisar y reducir costos en Scroll.
+- [x] Tests: Agregar más tests (votación múltiple, edge cases).
+- [x] Compilar y verificar: Asegurar sin errores.
 
 ### 2. Frontend (UI/UX)
 - [x] Crear app React básica con ethers.js.
-- [ ] Conectar a contrato: Actualizar ABI y dirección deployada.
+- [x] Conectar a contrato: Actualizar ABI y dirección deployada.
 - [ ] Mejorar UI: Diseño amigable (responsive, accesible), mostrar candidatos, votos en tiempo real.
-- [ ] Integrar wallet: MetaMask connection, manejo de errores.
-- [ ] Simular inclusión: Placeholder para account abstraction (futuro).
+- [x] Integrar wallet: MetaMask connection, manejo de errores. -> Cambiado a Web3Auth social login.
+- [x] Simular inclusión: Placeholder para account abstraction (futuro). -> Implementado con Web3Auth.
 - [ ] Testing: Probar en browser, mobile-friendly.
 
 ### 3. IA y Privacidad
@@ -28,7 +28,7 @@ Completar KIPTEK: Sistema de votación privada on-chain en Scroll zkEVM con IA, 
 - [ ] Placeholder ZK: Documentar cómo agregar ZK proofs (circom) en futuro.
 
 ### 4. Deploy y Integración
-- [ ] Configurar Scroll Sepolia: Obtener PRIVATE_KEY (no subir), actualizar hardhat.config.js.
+- [x] Configurar Scroll Sepolia: Obtener PRIVATE_KEY (no subir), actualizar hardhat.config.js.
 - [ ] Deploy contrato: Ejecutar `npm run deploy`, copiar dirección.
 - [ ] Conectar frontend: Actualizar CONTRACT_ADDRESS en App.js.
 - [ ] Verificar on-chain: Usar Scroll explorer para ver transacciones.
